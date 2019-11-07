@@ -8,7 +8,16 @@
         - prerequisite
 
     - import_tasks: activationkey.yml
-      when: ( redhat_subscription_activationkey is defined and redhat_subscription_org_id is defined )
+      when:
+        - (redhat_subscription_activationkey is defined) and (redhat_subscription_activationkey is not none)
+        - (redhat_subscription_org_id is defined) and (redhat_subscription_org_id is not none)
+      tags:
+        - subscription
+
+    - import_tasks: credentials.yml
+      when:
+        - (redhat_subscription_username is defined) and (redhat_subscription_username is not none)
+        - (redhat_subscription_password is defined) and (redhat_subscription_password is not none)
       tags:
         - subscription
 
