@@ -4,6 +4,7 @@
     name: "{{ redhat_subscription_enable_repos }}"
     state: enabled
   register: rhsm_repository
+  become: True
   tags:
     - repositories-enable
 
@@ -26,6 +27,7 @@
         name: "{{ repositories_to_disable }}"
         state: disabled
       when: repositories_to_disable
+      become: True
   when: redhat_subscription_enable_explicit_repos_only | bool
   tags:
     - repositories-disable

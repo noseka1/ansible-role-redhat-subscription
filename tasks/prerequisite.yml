@@ -6,8 +6,9 @@
 
 - name: install subscription manager
   package:
-      name: subscription-manager
-      state: present
+    name: subscription-manager
+    state: present
+  become: True
 
 - name: register prerequisite check completion
   set_fact:

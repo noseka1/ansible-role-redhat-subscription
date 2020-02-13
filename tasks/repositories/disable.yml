@@ -3,5 +3,6 @@
   rhsm_repository:
     name: "{{ redhat_subscription_disable_repos }}"
     state: disabled
+  become: True
   tags:
     - repositories-disable
